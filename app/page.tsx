@@ -14,7 +14,7 @@ export default function Home() {
         {timelineData.map((event) => (
           <div
             key={event.id}
-            className={`timeline-event ${event.side === "left" ? "reverse" : ""}`}
+            className="timeline-event"
           >
             <div className="event-image-container">
               <Image

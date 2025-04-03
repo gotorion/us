@@ -45,11 +45,11 @@ body {
   position: relative;
   margin: 0 auto;
   max-width: 800px;
-  padding-left: 20px;
-  /* Add padding for the timeline line */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0;
+  /* Remove padding */
 }
 
 /* Create a centered timeline line */
@@ -68,20 +68,74 @@ body {
 
 /* Adjust timeline events for centered line */
 .timeline-event {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 45%;
+  /* Narrower to fit on either side */
   position: relative;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.timeline-event.reverse {
-  flex-direction: row-reverse;
+/* Alternate timeline events left and right */
+.timeline-event:nth-child(odd) {
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+.timeline-event:nth-child(even) {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* Add connector to timeline - horizontal line */
+.timeline-event::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  width: 30px;
+  height: 2px;
+  background-color: #000;
+}
+
+/* Position connector for left and right events */
+.timeline-event:nth-child(odd)::after {
+  right: -30px;
+}
+
+.timeline-event:nth-child(even)::after {
+  left: -30px;
+}
+
+/* Add dot connector to timeline */
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  top: 21px;
+  /* Center the dot on the horizontal line */
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-event:nth-child(odd)::before {
+  right: -40px;
+}
+
+.timeline-event:nth-child(even)::before {
+  left: -40px;
 }
 
 .event-image-container {
-  width: 50%;
-  padding: 1rem;
+  width: 100%;
+  padding: 0.5rem;
 }
 
 .event-image {
@@ -91,7 +145,7 @@ body {
 }
 
 .event-description {
-  width: 50%;
+  width: 100%;
   padding: 1rem;
   text-align: center;
 }
