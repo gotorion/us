@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "image": "/images/event1.jpg",
+        "description": "This is the description for event 1.",
+        "side": "left"
+    },
+    {
+        "id": 2,
+        "image": "/images/event2.jpg",
+        "description": "This is the description for event 2.",
+        "side": "right"
+    },
+    {
+        "id": 3,
+        "image": "/images/event3.jpg",
+        "description": "This is the description for event 3.",
+        "side": "left"
+    }
+]
