@@ -5,11 +5,14 @@ import { useState } from "react";
 import timelineData from "../data/timeline.json";
 
 export default function Home() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<{
+    image: string;
+    description: string;
+  } | null>(null);
   const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
 
-  const handleImageClick = (image: string, e: React.MouseEvent) => {
-    setSelectedImage(image);
+  const handleImageClick = (event: { image: string, description: string }, e: React.MouseEvent) => {
+    setSelectedEvent(event);
     setClickPosition({ x: e.clientX, y: e.clientY });
   };
 
@@ -29,7 +32,10 @@ export default function Home() {
                 width={300}
                 height={200}
                 className="event-image"
-                onClick={(e) => handleImageClick(event.image, e)}
+                onClick={(e) => handleImageClick({
+                  image: event.image,
+                  description: event.description
+                }, e)}
               />
             </div>
             <div className="event-description">
@@ -39,11 +45,11 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Floating image zoom */}
-      {selectedImage && (
+      {/* Floating image zoom with description */}
+      {selectedEvent && (
         <div
           className="floating-modal-overlay"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedEvent(null)}
           style={{
             '--click-x': `${clickPosition.x}px`,
             '--click-y': `${clickPosition.y}px`
@@ -54,18 +60,21 @@ export default function Home() {
               className="floating-close-button"
               onClick={(e) => {
                 e.stopPropagation();
-                setSelectedImage(null);
+                setSelectedEvent(null);
               }}
             >
               ×
             </button>
             <Image
-              src={selectedImage}
+              src={selectedEvent.image}
               alt="Zoomed"
               width={800}
               height={600}
               className="floating-modal-image"
             />
+            <div className="floating-modal-description">
+              <p>{selectedEvent.description}</p>
+            </div>
           </div>
         </div>
       )}
