@@ -2,19 +2,22 @@
     {
         "id": 1,
         "image": "/images/event1.jpg",
-        "description": "This is the description for event 1.",
-        "side": "left"
+        "description": "攀攀说奖励李俊辉吃个砂糖橘",
+        "side": "left",
+        "date": "2025-02-17"
     },
     {
         "id": 2,
         "image": "/images/event2.jpg",
         "description": "攀攀送给李俊辉的蓝色郁金香，这是李俊辉人生第一次收到花。卡片上写着\"只要开心，每天都是自己的节日\"",
-        "side": "right"
+        "side": "right",
+        "date": "2025-03-08"
     },
     {
         "id": 3,
         "image": "/images/event3.jpg",
-        "description": "This is the description for event 3.",
-        "side": "left"
+        "description": "攀攀说要给李俊辉吃个橘子",
+        "side": "left",
+        "date": "2025-02-16"
     }
 ]

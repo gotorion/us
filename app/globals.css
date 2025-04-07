@@ -64,6 +64,82 @@ body {
   }
 }
 
+/* 添加时间线两侧装饰和功能区域 */
+.timeline-decoration {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18%;
+  pointer-events: none;
+}
+
+.decoration-left {
+  left: 0;
+}
+
+.decoration-right {
+  right: 0;
+}
+
+/* 日期标记样式 */
+.timeline-date-marker {
+  position: absolute;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: var(--accent);
+  opacity: 0.8;
+  transform: translateY(-50%);
+  text-align: center;
+  width: 80px;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.date-left {
+  right: calc(50% + 50px);
+}
+
+.date-right {
+  left: calc(50% + 50px);
+}
+
+/* 浮动装饰元素 */
+.floating-element {
+  position: absolute;
+  opacity: 0.6;
+  filter: blur(0.5px);
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-element.heart {
+  color: var(--accent);
+  font-size: 1.8rem;
+}
+
+.floating-element.flower {
+  color: var(--timeline);
+  font-size: 1.5rem;
+}
+
+.floating-element.star {
+  color: var(--foreground);
+  font-size: 1.2rem;
+  opacity: 0.4;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
 .timeline-container {
   position: relative;
   margin: 0 auto;
@@ -72,6 +148,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 0;
+  overflow: visible;
 }
 
 .timeline-container::before {
@@ -154,6 +231,26 @@ body {
 
 .timeline-event:nth-child(even)::before {
   left: -40px;
+}
+
+/* 显示日期在时间线事件上 */
+.event-date {
+  position: absolute;
+  top: -25px;
+  color: var(--accent);
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+.timeline-event:nth-child(odd) .event-date {
+  right: 10px;
+}
+
+.timeline-event:nth-child(even) .event-date {
+  left: 10px;
 }
 
 .event-image-container {

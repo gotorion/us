@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import timelineData from "../data/timeline.json";
 
 export default function Home() {
@@ -16,6 +16,43 @@ export default function Home() {
     setClickPosition({ x: e.clientX, y: e.clientY });
   };
 
+  // 创建浮动装饰元素
+  const [decorElements, setDecorElements] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    // 创建随机位置的装饰元素
+    const elements: JSX.Element[] = [];
+    const symbols = ['❤', '✿', '♡', '❀', '✻', '✹', '✺', '❋', '❦', '♥'];
+    const classes = ['heart', 'flower', 'star'];
+
+    // 生成20个随机装饰元素
+    for (let i = 0; i < 20; i++) {
+      const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+      const className = classes[Math.floor(Math.random() * classes.length)];
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const duration = 6 + Math.random() * 4;
+
+      elements.push(
+        <div
+          key={`decor-${i}`}
+          className={`floating-element ${className}`}
+          style={{
+            left: `${left}%`,
+            top: `${top}%`,
+            animationDelay: `${delay}s`,
+            animationDuration: `${duration}s`
+          }}
+        >
+          {symbol}
+        </div>
+      );
+    }
+
+    setDecorElements(elements);
+  }, []);
+
   return (
     <div className="page-container">
       {/* Banner */}
@@ -25,11 +62,22 @@ export default function Home() {
 
       {/* Timeline */}
       <div className="timeline-container">
+        {/* 装饰元素区域 */}
+        <div className="timeline-decoration decoration-left">
+          {decorElements.slice(0, 10)}
+        </div>
+        <div className="timeline-decoration decoration-right">
+          {decorElements.slice(10, 20)}
+        </div>
+
         {timelineData.map((event) => (
           <div
             key={event.id}
             className="timeline-event"
           >
+            {/* 添加日期显示 */}
+            {event.date && <div className="event-date">{event.date}</div>}
+
             <div className="event-image-container">
               <Image
                 src={event.image}
@@ -43,7 +91,6 @@ export default function Home() {
                 }, e)}
               />
             </div>
-            {/* 移除时间线上的描述 */}
           </div>
         ))}
       </div>
