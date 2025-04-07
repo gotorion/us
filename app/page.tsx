@@ -18,6 +18,11 @@ export default function Home() {
 
   return (
     <div className="page-container">
+      {/* Banner */}
+      <div className="site-banner">
+        <h1 className="banner-text">lijunhui & wupanpan</h1>
+      </div>
+
       {/* Timeline */}
       <div className="timeline-container">
         {timelineData.map((event) => (

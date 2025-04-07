@@ -18,8 +18,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -370,4 +368,45 @@ body {
 .modal-overlay {
   display: none;
   /* Hide the old modal */
+}
+
+/* Banner styles */
+.site-banner {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0 1.5rem;
+  /* 减少上下padding */
+  margin-bottom: 1rem;
+  /* 减少底部margin */
+  position: relative;
+}
+
+.site-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0.8rem;
+  /* 调整装饰线位置 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 2px;
+  background-color: var(--accent);
+  opacity: 0.6;
+}
+
+.banner-text {
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  font-size: 3rem;
+  /* 稍微减小字体大小 */
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 640px) {
+  .banner-text {
+    font-size: 2.5rem;
+  }
 }
