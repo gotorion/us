@@ -53,6 +53,24 @@ export default function Home() {
     setDecorElements(elements);
   }, []);
 
+  // 按日期对事件进行排序，最新的在前面
+  const sortedTimelineData = [...timelineData].sort((a, b) => {
+    // 如果有date字段就用date排序，否则用id排序
+    if (a.date && b.date) {
+      // 尝试将日期转换为时间戳进行比较
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+
+      // 如果日期格式有效，则按时间倒序排列
+      if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
+        return dateB.getTime() - dateA.getTime(); // 倒序，最新的在前
+      }
+    }
+
+    // 作为后备，用id进行排序（假设id越大表示越新）
+    return b.id - a.id;
+  });
+
   return (
     <div className="page-container">
       {/* Banner */}
@@ -70,7 +88,7 @@ export default function Home() {
           {decorElements.slice(10, 20)}
         </div>
 
-        {timelineData.map((event) => (
+        {sortedTimelineData.map((event) => (
           <div
             key={event.id}
             className="timeline-event"
