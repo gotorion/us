@@ -38,9 +38,7 @@ export default function Home() {
                 }, e)}
               />
             </div>
-            <div className="event-description">
-              <p>{event.description}</p>
-            </div>
+            {/* 移除时间线上的描述 */}
           </div>
         ))}
       </div>
