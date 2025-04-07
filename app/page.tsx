@@ -1,8 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import timelineData from "../data/timeline.json";
+
+// 定义一个装饰元素类型而不使用JSX命名空间
+interface DecorationElement {
+  key: string;
+  className: string;
+  style: React.CSSProperties;
+  symbol: string;
+}
 
 export default function Home() {
   const [selectedEvent, setSelectedEvent] = useState<{
@@ -17,11 +25,11 @@ export default function Home() {
   };
 
   // 创建浮动装饰元素
-  const [decorElements, setDecorElements] = useState<JSX.Element[]>([]);
+  const [decorElements, setDecorElements] = useState<ReactNode[]>([]);
 
   useEffect(() => {
     // 创建随机位置的装饰元素
-    const elements: JSX.Element[] = [];
+    const elements: ReactNode[] = [];
     const symbols = ['❤', '✿', '♡', '❀', '✻', '✹', '✺', '❋', '❦', '♥'];
     const classes = ['heart', 'flower', 'star'];
 
