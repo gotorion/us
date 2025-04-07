@@ -6,6 +6,12 @@ import timelineData from "../data/timeline.json";
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
+
+  const handleImageClick = (image: string, e: React.MouseEvent) => {
+    setSelectedImage(image);
+    setClickPosition({ x: e.clientX, y: e.clientY });
+  };
 
   return (
     <div className="page-container">
@@ -23,7 +29,7 @@ export default function Home() {
                 width={300}
                 height={200}
                 className="event-image"
-                onClick={() => setSelectedImage(event.image)}
+                onClick={(e) => handleImageClick(event.image, e)}
               />
             </div>
             <div className="event-description">
@@ -33,19 +39,34 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Modal for image zoom */}
+      {/* Floating image zoom */}
       {selectedImage && (
         <div
-          className="modal-overlay"
+          className="floating-modal-overlay"
           onClick={() => setSelectedImage(null)}
+          style={{
+            '--click-x': `${clickPosition.x}px`,
+            '--click-y': `${clickPosition.y}px`
+          } as React.CSSProperties}
         >
-          <Image
-            src={selectedImage}
-            alt="Zoomed"
-            width={600}
-            height={400}
-            className="modal-image"
-          />
+          <div className="floating-modal-content">
+            <button
+              className="floating-close-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
+            >
+              ×
+            </button>
+            <Image
+              src={selectedImage}
+              alt="Zoomed"
+              width={800}
+              height={600}
+              className="floating-modal-image"
+            />
+          </div>
         </div>
       )}
     </div>

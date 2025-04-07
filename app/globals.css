@@ -242,3 +242,98 @@ body {
     transform: scale(1);
   }
 }
+
+/* Floating Modal Styles */
+.floating-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 15, 10, 0.4);
+  /* 更透明的背景 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  backdrop-filter: blur(3px);
+  /* 减少模糊效果 */
+  transition: all 0.3s ease;
+}
+
+.floating-modal-content {
+  position: relative;
+  width: auto;
+  /* 自适应宽度 */
+  max-width: 80vw;
+  /* 减小最大宽度 */
+  max-height: 80vh;
+  border-radius: 16px;
+  background: transparent;
+  /* 透明背景 */
+  box-shadow: none;
+  /* 移除阴影 */
+  padding: 10px;
+  transform-origin: var(--click-x) var(--click-y);
+  animation: floatIn 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+}
+
+.floating-modal-image {
+  border-radius: 12px;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: calc(80vh - 20px);
+  display: block;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  /* 只给图片添加阴影 */
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  /* 白色边框 */
+}
+
+.floating-close-button {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  /* 定位在外部 */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2;
+  border: 2px solid white;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.floating-close-button:hover {
+  opacity: 1;
+  transform: scale(1.1) rotate(90deg);
+  /* 添加旋转效果 */
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Remove old modal styles or keep them as backup */
+.modal-overlay {
+  display: none;
+  /* Hide the old modal */
+}
