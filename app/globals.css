@@ -84,7 +84,7 @@ body {
 /* 日期标记样式 */
 .timeline-date-marker {
   position: absolute;
-  font-family: 'Dancing Script', cursive;
+  font-family: inherit;
   font-size: 1.5rem;
   color: var(--accent);
   opacity: 0.8;
@@ -238,7 +238,7 @@ body {
   position: absolute;
   top: -25px;
   color: var(--accent);
-  font-family: 'Dancing Script', cursive;
+  font-family: inherit;
   font-weight: bold;
   font-size: 1.2rem;
   opacity: 0.9;
@@ -492,7 +492,8 @@ body {
 }
 
 .banner-text {
-  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  font-family: inherit;
+  /* 使用继承的Dancing Script字体 */
   font-size: 3rem;
   /* 稍微减小字体大小 */
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);

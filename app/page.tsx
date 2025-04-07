@@ -4,14 +4,6 @@ import Image from "next/image";
 import { useState, useEffect, ReactNode } from "react";
 import timelineData from "../data/timeline.json";
 
-// 定义一个装饰元素类型而不使用JSX命名空间
-interface DecorationElement {
-  key: string;
-  className: string;
-  style: React.CSSProperties;
-  symbol: string;
-}
-
 export default function Home() {
   const [selectedEvent, setSelectedEvent] = useState<{
     image: string;

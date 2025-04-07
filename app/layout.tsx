@@ -1,5 +1,14 @@
 import { Metadata } from "next";
 import "./globals.css";
+// 导入字体使用Next.js推荐的方式
+import { Dancing_Script } from 'next/font/google';
+
+// 初始化字体
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '700'],
+});
 
 export const metadata: Metadata = {
   title: "Timeline",
@@ -13,12 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
-      <body>
+      <body className={dancingScript.className}>
         {children}
       </body>
     </html>
