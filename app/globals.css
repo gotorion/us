@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fffaf5;
-  /* 温暖的米色背景 */
-  --foreground: #5a4a42;
-  /* 深棕色文字 */
-  --accent: #e8c4a2;
-  /* 温暖的杏色作为强调色 */
-  --timeline: #b49a8a;
-  /* 柔和的棕色时间线 */
-  --card-bg: rgba(255, 250, 245, 0.9);
+  --background: #f0f7f0;
+  /* 淡绿色背景 */
+  --foreground: #2e4a2e;
+  /* 深绿色文字 */
+  --accent: #8fb996;
+  /* 温和的绿色作为强调色 */
+  --timeline: #77a97b;
+  /* 柔和的绿色时间线 */
+  --card-bg: rgba(240, 247, 240, 0.9);
   /* 卡片背景色 */
-  --shadow: rgba(185, 156, 130, 0.2);
+  --shadow: rgba(115, 156, 123, 0.2);
   /* 温暖的阴影色 */
 }
 
@@ -22,15 +22,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #352e29;
-    /* 暖色调深色背景 */
-    --foreground: #f5e8dd;
-    /* 米色文字 */
-    --accent: #d3b08c;
+    --background: #243024;
+    /* 暗绿色背景 */
+    --foreground: #d9e8d9;
+    /* 浅绿色文字 */
+    --accent: #7fad7f;
     /* 深色模式下的强调色 */
-    --timeline: #a58b7a;
+    --timeline: #5a8c60;
     /* 深色模式下的时间线 */
-    --card-bg: rgba(70, 60, 50, 0.9);
+    --card-bg: rgba(46, 68, 46, 0.9);
     /* 深色模式卡片背景 */
     --shadow: rgba(0, 0, 0, 0.3);
     /* 深色阴影 */
